@@ -1,13 +1,11 @@
-from collections import deque
-
 def solution(priorities, location):
     answer = 0
     
-    #(location, priority)형태로 큐에 저장
-    queue = deque(enumerate(priorities))
+    # (location, priority)형태로 큐에 저장
+    queue = list(enumerate(priorities))
     
     while queue:
-        p = queue.popleft()
+        p = queue.pop(0)
         
         # 큐에 다른 프로세스 남아 있고, 나온 프로세스보다 우선 순위 높은 게 있다면
         if queue and p[1] < max(x[1] for x in queue):
